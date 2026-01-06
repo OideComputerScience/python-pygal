@@ -1,6 +1,5 @@
 import pygal
 
-# Historical populations (approximate, in millions)
 population_data = {
     "Ireland": [5.1, 6.9, 4.5, 2.9, 3.8],
     "UK": [16.0, 27.5, 38.0, 50.0, 59.1],
@@ -8,14 +7,14 @@ population_data = {
     "Germany": [24.0, 35.0, 56.0, 69.0, 82.0]
 }
 
-# Generate sparkline text for each country
+#Sparkline is generated for each country
 spark_texts = {}
 for country, data in population_data.items():
     chart = pygal.Line()
     chart.add(country, data)
     spark_texts[country] = chart.render_sparktext()
 
-# Build HTML content
+#HTML
 html_content = """
 <!DOCTYPE html>
 <html lang="en">
@@ -40,11 +39,11 @@ html_content = """
         <tbody>
 """
 
-# Add table rows for each country
+#Add a table row for each country listed
 for country, spark in spark_texts.items():
     html_content += f"            <tr><td>{country}</td><td>{spark}</td></tr>\n"
 
-# Close HTML tags
+#End HTML
 html_content += """
         </tbody>
     </table>
@@ -52,8 +51,9 @@ html_content += """
 </html>
 """
 
-# Save HTML to file
+#Save HTML to file
 with open("europe_population_sparklines.html", "w", encoding="utf-8") as f:
     f.write(html_content)
 
 print("HTML page generated: europe_population_sparklines.html")
+
